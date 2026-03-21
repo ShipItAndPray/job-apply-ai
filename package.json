@@ -11,8 +11,12 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "search": "node --loader ts-node/esm src/search.ts",
-    "status": "node --loader ts-node/esm src/status.ts"
+    "pull": "node scripts/greenhouse-pull.cjs",
+    "pull:today": "node scripts/greenhouse-pull.cjs --days 1",
+    "filter": "node scripts/greenhouse-filter.cjs",
+    "apply": "node scripts/greenhouse-apply.cjs --dry-run",
+    "apply:submit": "node scripts/greenhouse-apply.cjs",
+    "pipeline": "node scripts/greenhouse-pull.cjs && node scripts/greenhouse-filter.cjs && echo 'Ready to apply. Run: npm run apply'"
   },
   "dependencies": {
     "better-sqlite3": "^9.4.3",
