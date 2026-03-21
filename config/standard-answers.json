@@ -1,0 +1,108 @@
+{
+  "_description": "Standard answers for ATS application questions. Reusable across all job applications.",
+  "_updated": "2026-02-26",
+  "_customization_note": "Update 'expected_salary.default_value' and 'expected_salary.answer_strategy' to match your target compensation.",
+
+  "common_questions": {
+    "previously_employed": {
+      "question_patterns": ["previously been employed", "formerly employed", "past employee"],
+      "answer": "No",
+      "notes": "Default No unless applying to a company we've worked at before"
+    },
+    "conflict_of_interest": {
+      "question_patterns": ["conflict of interest", "competing business", "outside employment"],
+      "answer": "No"
+    },
+    "sponsorship_required": {
+      "question_patterns": ["require sponsorship", "sponsorship", "visa sponsorship", "work authorization sponsorship"],
+      "answer": "No",
+      "notes": "Set to 'Yes' if you require visa sponsorship. Always answer truthfully — some companies auto-reject sponsorship requests."
+    },
+    "authorized_to_work": {
+      "question_patterns": ["authorized to work", "legally authorized", "eligib.*work", "right to work"],
+      "answer": "Yes",
+      "notes": "Set to your actual authorization status"
+    },
+    "age_18_plus": {
+      "question_patterns": ["18 years of age", "18 or older", "at least 18"],
+      "answer": "Yes"
+    },
+    "related_to_employees": {
+      "question_patterns": ["related to.*employee", "relative.*employed", "family member.*work"],
+      "answer": "No"
+    },
+    "non_compete": {
+      "question_patterns": ["non-compete", "non-solicitation", "post-employment restriction", "restrictive covenant"],
+      "answer": "No"
+    },
+    "background_check_consent": {
+      "question_patterns": ["background check", "criminal background", "consent to.*check"],
+      "answer": "Yes"
+    },
+    "drug_test_consent": {
+      "question_patterns": ["drug test", "drug screen", "substance"],
+      "answer": "Yes"
+    },
+    "willing_to_relocate": {
+      "question_patterns": ["willing to relocate", "open to relocation", "relocate"],
+      "answer": "Yes"
+    },
+    "text_message_updates": {
+      "question_patterns": ["text message", "SMS", "receive text"],
+      "answer": "Yes"
+    },
+    "how_did_you_hear": {
+      "question_patterns": ["how did you hear", "how did you find", "source of application", "referral source"],
+      "answer": "LinkedIn",
+      "notes": "Default to LinkedIn since that's where we search"
+    },
+    "start_date": {
+      "question_patterns": ["start date", "when can you start", "available to start", "earliest start"],
+      "answer": "2 weeks",
+      "notes": "2 weeks notice from current employer"
+    },
+    "criminal_history": {
+      "question_patterns": ["convicted", "criminal", "felony", "misdemeanor"],
+      "answer": "No"
+    },
+    "expected_salary": {
+      "question_patterns": ["expected.*salary", "salary expectation", "desired.*salary", "compensation expectation"],
+      "answer_strategy": "Use YOUR_SALARY as the default salary expectation. Update this to match your target compensation.",
+      "default_value": "YOUR_SALARY"
+    }
+  },
+
+  "voluntary_disclosures": {
+    "veteran_status": {
+      "question_patterns": ["veteran", "military service", "armed forces"],
+      "answer": "I am not a protected veteran",
+      "alt_answers": ["I am not a veteran", "No"]
+    },
+    "disability_status": {
+      "question_patterns": ["disability", "handicap", "impairment"],
+      "answer": "No, I do not have a disability",
+      "alt_answers": ["No", "I do not wish to answer", "I don't wish to answer"]
+    },
+    "gender": {
+      "question_patterns": ["gender", "sex"],
+      "answer": "Decline to self-identify",
+      "notes": "Optional field — update to your preference"
+    },
+    "race_ethnicity": {
+      "question_patterns": ["race", "ethnicity", "ethnic background"],
+      "answer": "Decline to self-identify",
+      "alt_answers": ["I do not wish to answer", "Prefer not to say", "Two or more races"],
+      "notes": "Optional field - decline is safest"
+    }
+  },
+
+  "workday_specific": {
+    "notes": [
+      "Workday uses data-automation-id for all elements",
+      "Dropdowns are NOT native <select> - they're div-based custom components",
+      "Click the button with aria-haspopup, then click the promptOption",
+      "Field IDs are dynamic hex GUIDs unique to each company's Workday tenant",
+      "Match questions by text content, not by field ID"
+    ]
+  }
+}

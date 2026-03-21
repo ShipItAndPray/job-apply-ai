@@ -1,0 +1,288 @@
+{
+  "_description": "Workday-specific application profile. Maps all form fields to data-automation-id selectors. Improves with each application.",
+  "_version": "1.0",
+  "_lastUpdated": "2026-02-26",
+  "_learnings": [
+    "Workday dropdowns are div-based, NOT native <select>. Click button[aria-haspopup='listbox'], then [role='option']",
+    "click_filter overlay intercepts submit buttons — use { force: true }",
+    "Field IDs are dynamic hex GUIDs per tenant — match by question text, not field ID",
+    "Use waitUntil: 'domcontentloaded', NOT 'networkidle' — Workday SPA never goes idle",
+    "Wait 5-8 seconds after each navigation for SPA rendering",
+    "Arbitration checkbox resets every session — always check it",
+    "Resume upload: check for existing files first, delete duplicates, then upload latest",
+    "'Male' substring matches 'Female' — use exact string matching for dropdowns",
+    "Race option text varies by tenant: 'Asian (United States of America)' or 'Asian (Not Hispanic or Latino)' — use contains-match",
+    "First button[aria-haspopup='listbox'] on page may be language selector — scope to form field container",
+    "After account creation, email verification is required before sign-in works",
+    "SVG elements have SVGAnimatedString for className, not string — avoid className in debug"
+  ],
+
+  "step1_account": {
+    "_description": "Create Account / Sign In",
+    "fields": {
+      "email": { "automationId": "email", "value": "jane.developer@example.com" },
+      "password": { "automationId": "password", "value": "YOUR_PASSWORD_HERE" },
+      "verifyPassword": { "automationId": "verifyPassword", "value": "YOUR_PASSWORD_HERE" },
+      "agreeCheckbox": { "automationId": "createAccountCheckbox" },
+      "createSubmit": { "automationId": "click_filter", "note": "Must use force:true" },
+      "signInSubmit": { "automationId": "click_filter", "note": "Must use force:true" }
+    },
+    "flow": [
+      "Try sign-in first (existing account)",
+      "If 'already exists' or 'invalid credentials', try create account",
+      "If 'already registered', switch to sign-in",
+      "After account creation, user must verify email before sign-in works",
+      "Store credentials in data/credentials/workday-accounts.json per tenant"
+    ]
+  },
+
+  "step2_myInformation": {
+    "_description": "Personal Information",
+    "fields": {
+      "firstName": { "automationId": "legalNameSection_firstName", "value": "Jane" },
+      "lastName": { "automationId": "legalNameSection_lastName", "value": "Developer" },
+      "preferredName": { "automationId": "preferredName", "value": "Jane", "note": "Field may not exist on all tenants" },
+      "country": { "automationId": "addressSection_countryRegion", "value": "United States of America", "type": "dropdown" },
+      "addressLine1": { "automationId": "addressSection_addressLine1", "value": "123 Main Street" },
+      "city": { "automationId": "addressSection_city", "value": "San Francisco" },
+      "state": { "automationId": "addressSection_region", "value": "California", "type": "dropdown" },
+      "zip": { "automationId": "addressSection_postalCode", "value": "94105" },
+      "phoneType": { "automationId": "phone-device-type", "value": "Mobile", "type": "dropdown" },
+      "phoneNumber": { "automationId": "phone-number", "value": "555-123-4567" }
+    },
+    "navigation": { "automationId": "bottom-navigation-next-button" }
+  },
+
+  "step3_myExperience": {
+    "_description": "Resume, Work History, Education, Skills, Social URLs",
+    "resume": {
+      "uploadSelector": "input[type='file'], [data-automation-id='file-upload-drop-zone']",
+      "filePath": "./templates/resume-base.pdf",
+      "altFormats": ["./templates/resume-base.docx"],
+      "dedup": "Always check for existing attachments before uploading. Delete duplicates first."
+    },
+    "workHistory": [
+      {
+        "company": "TechCorp",
+        "title": "Senior Software Engineer",
+        "location": "Remote",
+        "startMonth": "March", "startYear": 2022,
+        "currentlyWorkHere": true,
+        "description": "Java/Spring Boot microservices for payments platform, event-driven architecture with Kafka, AI-augmented development workflows"
+      },
+      {
+        "company": "DataSystems Inc",
+        "title": "Software Engineer",
+        "location": "Remote",
+        "startMonth": "January", "startYear": 2020,
+        "endMonth": "March", "endYear": 2022,
+        "description": "High-throughput data pipeline processing 50M+ daily records, Spring Batch workflows, SOC 2 compliance"
+      },
+      {
+        "company": "CloudWorks",
+        "title": "Senior Engineer",
+        "location": "San Francisco, CA",
+        "startMonth": "July", "startYear": 2018,
+        "endMonth": "January", "endYear": 2020,
+        "description": "Led backend for SaaS platform serving 5M+ users, reduced P1 incidents by 60%"
+      },
+      {
+        "company": "FinTech Startup",
+        "title": "Software Engineer",
+        "location": "San Francisco, CA",
+        "startMonth": "June", "startYear": 2016,
+        "endMonth": "July", "endYear": 2018,
+        "description": "REST API design, microservices architecture, AWS cloud infrastructure, PostgreSQL performance tuning"
+      },
+      {
+        "company": "Stanford University",
+        "title": "Research Assistant",
+        "location": "Stanford, CA",
+        "startMonth": "August", "startYear": 2014,
+        "endMonth": "May", "endYear": 2016,
+        "description": "Distributed systems research, published 2 papers on consensus algorithms"
+      }
+    ],
+    "education": [
+      {
+        "school": "Stanford University",
+        "degree": "Master's",
+        "field": "Computer Science",
+        "location": "Stanford, CA",
+        "startMonth": "August", "startYear": 2014,
+        "endMonth": "May", "endYear": 2016
+      },
+      {
+        "school": "MIT",
+        "degree": "Bachelor's",
+        "field": "Computer Science",
+        "location": "Cambridge, MA",
+        "startMonth": "September", "startYear": 2010,
+        "endMonth": "May", "endYear": 2014
+      }
+    ],
+    "skills": [
+      "Java 17+", "Python", "TypeScript", "SQL",
+      "Spring Boot", "Spring MVC", "Spring Data", "Spring Batch", "Spring Security", "Hibernate/JPA",
+      "Apache Kafka", "AWS SNS", "AWS SQS", "RabbitMQ",
+      "RESTful API Design", "OpenAPI/Swagger", "gRPC",
+      "JUnit 5", "Mockito", "Spock", "WireMock", "BDD",
+      "AWS ECS Fargate", "AWS Lambda", "S3", "CloudFormation",
+      "MongoDB", "PostgreSQL", "DynamoDB", "Redis", "MySQL", "Cassandra",
+      "Docker", "Kubernetes", "Terraform",
+      "Splunk", "Datadog", "Prometheus", "Grafana",
+      "Jenkins", "TeamCity", "Gradle", "Maven",
+      "Claude Code", "MCP", "Agentic Coding", "AI-Augmented Development"
+    ],
+    "socialUrls": {
+      "linkedIn": "https://www.linkedin.com/in/janedeveloper/",
+      "additional": "",
+      "note": "Use LinkedIn profile as primary social URL field."
+    },
+    "navigation": { "automationId": "bottom-navigation-next-button" }
+  },
+
+  "step4_applicationQuestions": {
+    "_description": "Common application questions — match by question text, not field ID",
+    "strategy": "Match questions by text content using contains/regex. Field IDs are dynamic per tenant.",
+    "answers": {
+      "authorized_to_work": {
+        "patterns": ["authorized to work", "legally authorized", "eligible to work", "right to work"],
+        "answer": "Yes"
+      },
+      "sponsorship": {
+        "patterns": ["require sponsorship", "sponsorship", "visa sponsorship", "need sponsorship"],
+        "answer": "No",
+        "critical": "Update to 'Yes' if you require sponsorship. Always answer truthfully."
+      },
+      "previously_employed": {
+        "patterns": ["previously been employed", "formerly employed", "past employee", "former employee"],
+        "answer": "No",
+        "note": "Unless applying to a company from work history"
+      },
+      "age_18_plus": {
+        "patterns": ["18 years of age", "18 or older", "at least 18"],
+        "answer": "Yes"
+      },
+      "background_check": {
+        "patterns": ["background check", "criminal background", "consent to check"],
+        "answer": "Yes"
+      },
+      "drug_test": {
+        "patterns": ["drug test", "drug screen", "substance"],
+        "answer": "Yes"
+      },
+      "non_compete": {
+        "patterns": ["non-compete", "non-solicitation", "restrictive covenant"],
+        "answer": "No"
+      },
+      "criminal_history": {
+        "patterns": ["convicted", "criminal", "felony", "misdemeanor"],
+        "answer": "No"
+      },
+      "willing_to_relocate": {
+        "patterns": ["willing to relocate", "open to relocation"],
+        "answer": "Yes"
+      },
+      "how_did_you_hear": {
+        "patterns": ["how did you hear", "how did you find", "referral source", "source"],
+        "answer": "LinkedIn"
+      },
+      "start_date": {
+        "patterns": ["start date", "when can you start", "available to start", "earliest start"],
+        "answer": "2 weeks"
+      },
+      "salary_expectations": {
+        "patterns": ["expected salary", "salary expectation", "desired salary", "compensation"],
+        "answer": "YOUR_SALARY",
+        "strategy": "Match top of their posted range, or update to your target compensation"
+      },
+      "years_experience": {
+        "patterns": ["years of experience", "how many years", "total experience"],
+        "answer": "8",
+        "dropdown_strategy": "Select highest applicable bracket (e.g., '5-10', '10+')"
+      },
+      "related_to_employee": {
+        "patterns": ["related to.*employee", "relative.*employed", "family member"],
+        "answer": "No"
+      },
+      "conflict_of_interest": {
+        "patterns": ["conflict of interest", "competing business", "outside employment"],
+        "answer": "No"
+      },
+      "text_updates": {
+        "patterns": ["text message", "SMS", "receive text"],
+        "answer": "Yes"
+      }
+    },
+    "arbitration": {
+      "selector": "#termsAndConditions--acceptTermsAndAgreements",
+      "note": "Resets every session. Must check with force:true every time on step 4."
+    },
+    "navigation": { "automationId": "bottom-navigation-next-button" }
+  },
+
+  "step5_voluntaryDisclosures": {
+    "_description": "EEO/OFCCP voluntary disclosures",
+    "fields": {
+      "gender": {
+        "value": "Decline to Self-Identify",
+        "matchStrategy": "Exact match — 'Male' substring matches 'Female', so use exact. Update to your preference."
+      },
+      "hispanicLatino": {
+        "value": "No",
+        "altValues": ["No, I am not Hispanic or Latino"]
+      },
+      "race": {
+        "value": "Decline to Self-Identify",
+        "matchStrategy": "Update to your actual race/ethnicity. Actual option text varies by tenant."
+      },
+      "veteranStatus": {
+        "value": "I am not a protected veteran",
+        "altValues": ["I am not a veteran", "No"]
+      },
+      "disabilityStatus": {
+        "value": "No, I do not have a disability",
+        "altValues": ["No", "I do not wish to answer"]
+      }
+    },
+    "navigation": { "automationId": "bottom-navigation-next-button" }
+  },
+
+  "step6_reviewSubmit": {
+    "_description": "Review and submit",
+    "preSubmit": "Take screenshot for records",
+    "submitButton": "[data-automation-id='submitButton']",
+    "postSubmit": "Take screenshot of confirmation",
+    "screenshotPath": "data/screenshots/{jobId}/"
+  },
+
+  "technicalConfig": {
+    "browser": {
+      "headless": false,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+    },
+    "navigation": {
+      "waitUntil": "domcontentloaded",
+      "timeout": 30000,
+      "spaRenderWait": 6000,
+      "postLoginWait": 12000,
+      "postUploadWait": 5000
+    },
+    "selectors": {
+      "nextButton": "[data-automation-id='pageFooterNextButton']",
+      "errorMessage": "[data-automation-id='errorMessage']",
+      "invalidField": "[aria-invalid='true']",
+      "fileUpload": "input[type='file']",
+      "dropZone": "[data-automation-id='file-upload-drop-zone']",
+      "stepIndicator": "current step (\\d)"
+    },
+    "dropdownHandling": {
+      "trigger": "button[aria-haspopup='listbox']",
+      "options": "[role='option']",
+      "listbox": "[role='listbox']",
+      "note": "Scope dropdown search to parent form field container to avoid hitting language selector"
+    },
+    "credentialStorage": "data/credentials/workday-accounts.json"
+  }
+}

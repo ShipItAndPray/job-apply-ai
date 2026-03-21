@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+dist/
+
+# Build artifacts
+*.js.map
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# ATS credentials — NEVER commit these
+data/credentials/
+
+# Application tracking database
+data/tracker.db
+data/tracker.db-shm
+data/tracker.db-wal
+
+# Screenshots from browser automation
+data/screenshots/
+
+# Tailored resumes per job (generated at runtime)
+data/resumes/
+
+# Job data files (large, generated)
+data/jobs/
+
+# Personal config files — use the .example versions instead
+config/profile.json
+config/greenhouse-profile.json
+config/workday-profile.json
+
+# Resume and cover letter documents (binary files)
+*.pdf
+*.docx
+*.doc
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# TypeScript incremental build info
+*.tsbuildinfo

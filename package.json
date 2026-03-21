@@ -1,0 +1,31 @@
+{
+  "name": "job-apply-ai",
+  "version": "0.1.0",
+  "description": "AI-powered job application pipeline — search, tailor resumes, auto-fill ATS forms",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShipItAndPray/job-apply-ai.git"
+  },
+  "author": "ShipItAndPray",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "search": "node --loader ts-node/esm src/search.ts",
+    "status": "node --loader ts-node/esm src/status.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "linkedin-jobs-api": "^2.0.0",
+    "playwright": "^1.42.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^20.11.24",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

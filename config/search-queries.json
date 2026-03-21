@@ -1,0 +1,10 @@
+{
+  "queries": [
+    { "keyword": "Senior Staff Software Engineer Java", "location": "United States", "experienceLevel": "senior", "remoteFilter": "remote", "salary": "120000" },
+    { "keyword": "Staff Engineer Java Spring Boot", "location": "United States", "experienceLevel": "senior", "remoteFilter": "remote", "salary": "120000" },
+    { "keyword": "Senior Software Engineer fintech payments", "location": "United States", "experienceLevel": "senior", "remoteFilter": "remote" },
+    { "keyword": "Senior Backend Engineer Java Kafka", "location": "United States", "experienceLevel": "senior", "remoteFilter": "remote" },
+    { "keyword": "Principal Software Engineer Java AWS", "location": "United States", "experienceLevel": "senior", "salary": "120000" },
+    { "keyword": "Senior Software Engineer payments platform", "location": "United States", "remoteFilter": "remote", "salary": "120000" }
+  ]
+}

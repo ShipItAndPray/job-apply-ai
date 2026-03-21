@@ -1,0 +1,84 @@
+{
+  "workday": {
+    "urlPatterns": ["myworkdayjobs.com", "wd5.myworkdayjobs.com", "workday.com"],
+    "fields": {
+      "firstName": "[data-automation-id='legalName'] input[data-automation-id='firstName']",
+      "lastName": "[data-automation-id='legalName'] input[data-automation-id='lastName']",
+      "email": "input[data-automation-id='email']",
+      "phone": "input[data-automation-id='phone']",
+      "resume": "input[type='file'][data-automation-id='resume']",
+      "country": "select[data-automation-id='country']"
+    },
+    "navigation": {
+      "applyButton": "button[data-automation-id='applyButton']",
+      "nextButton": "button[data-automation-id='bottom-navigation-next-button']",
+      "submitButton": "button[data-automation-id='submit']"
+    }
+  },
+  "greenhouse": {
+    "urlPatterns": ["boards.greenhouse.io", "job-boards.greenhouse.io"],
+    "fields": {
+      "firstName": "#first_name",
+      "lastName": "#last_name",
+      "email": "#email",
+      "phone": "#phone",
+      "resume": "input[type='file']#resume",
+      "coverLetter": "input[type='file']#cover_letter",
+      "linkedIn": "input[name*='linkedin' i]"
+    },
+    "navigation": {
+      "submitButton": "#submit_app"
+    }
+  },
+  "lever": {
+    "urlPatterns": ["jobs.lever.co", "lever.co"],
+    "fields": {
+      "fullName": "input[name='name']",
+      "email": "input[name='email']",
+      "phone": "input[name='phone']",
+      "resume": "input[type='file'].resume-upload",
+      "linkedIn": "input[name*='linkedin' i]",
+      "website": "input[name*='website' i]",
+      "currentCompany": "input[name*='company' i]"
+    },
+    "navigation": {
+      "submitButton": "button[type='submit']"
+    }
+  },
+  "icims": {
+    "urlPatterns": ["icims.com"],
+    "fields": {
+      "firstName": "input[id*='FirstName']",
+      "lastName": "input[id*='LastName']",
+      "email": "input[id*='Email']",
+      "phone": "input[id*='Phone']"
+    },
+    "navigation": {
+      "submitButton": "input[type='submit']"
+    }
+  },
+  "smartrecruiters": {
+    "urlPatterns": ["jobs.smartrecruiters.com"],
+    "fields": {
+      "firstName": "input[name='firstName']",
+      "lastName": "input[name='lastName']",
+      "email": "input[name='email']",
+      "phone": "input[name='phoneNumber']"
+    },
+    "navigation": {
+      "submitButton": "button[type='submit']"
+    }
+  },
+  "ashby": {
+    "urlPatterns": ["jobs.ashbyhq.com"],
+    "fields": {
+      "firstName": "input[name='_systemfield_name']",
+      "email": "input[name='_systemfield_email']",
+      "phone": "input[name='_systemfield_phone']",
+      "resume": "input[type='file']"
+    },
+    "navigation": {
+      "submitButton": "button[type='submit']"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+JANE DEVELOPER
+San Francisco, CA 94105 | 555-123-4567 | jane.developer@example.com
+LinkedIn: https://www.linkedin.com/in/janedeveloper/ | GitHub: https://github.com/janedeveloper
+
+─────────────────────────────────────────────────────────────────────────────
+SUMMARY
+─────────────────────────────────────────────────────────────────────────────
+Senior Software Engineer with 8+ years building high-scale distributed systems
+and cloud-native backend platforms. Deep expertise in Java, Spring Boot, Apache
+Kafka, and AWS. Proven track record delivering systems processing millions of
+daily transactions across fintech, payments, and SaaS domains. Patent holder.
+Strong advocate for event-driven architecture, observability, and developer
+productivity tooling including AI-augmented development workflows.
+
+─────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+─────────────────────────────────────────────────────────────────────────────
+Languages:       Java 17+, Python, TypeScript, SQL
+Frameworks:      Spring Boot, Spring Batch, Spring Security, Hibernate/JPA
+Messaging:       Apache Kafka, AWS SQS/SNS, RabbitMQ
+Cloud/Infra:     AWS (ECS Fargate, Lambda, S3, CloudFormation), Docker,
+                 Kubernetes, Terraform
+Databases:       PostgreSQL, MongoDB, DynamoDB, Redis, MySQL, Cassandra
+API:             RESTful API Design, OpenAPI/Swagger, gRPC
+Testing:         JUnit 5, Mockito, WireMock, BDD/Spock
+Observability:   Datadog, Splunk, Prometheus, Grafana
+CI/CD:           Jenkins, GitHub Actions, Gradle, Maven
+AI/Dev Tools:    Claude Code, MCP, Agentic Coding, AI-Augmented Development
+
+─────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+─────────────────────────────────────────────────────────────────────────────
+
+TECHCORP — Remote
+Senior Software Engineer                                  March 2022 – Present
+• Architected Java/Spring Boot microservices for payments platform handling
+  $2B+ annual transaction volume; reduced latency by 40% via Kafka event
+  streaming and async processing pipeline redesign
+• Led migration of monolithic billing system to microservices, cutting release
+  cycles from bi-weekly to daily continuous deployment
+• Designed circuit-breaker patterns and chaos engineering runbooks, reducing
+  production P1 incidents from 12/quarter to 3/quarter
+• Championed AI-augmented development practices (Claude Code, GitHub Copilot),
+  improving team velocity by 30%
+• Mentored 4 engineers; conducted 50+ technical interviews
+
+DATASYSTEMS INC — Remote
+Software Engineer                                     January 2020 – March 2022
+• Built high-throughput data ingestion pipeline processing 50M+ records/day
+  using Spring Batch and AWS SQS; sustained 99.95% uptime across 24 months
+• Achieved SOC 2 Type II certification by leading security remediation effort
+  across 6 microservices and 3 data stores
+• Reduced PostgreSQL query latency by 65% through query plan analysis, index
+  optimization, and connection pool tuning
+• Designed tenant-scoped data isolation layer adopted by 3 additional product
+  teams within 6 months of delivery
+
+CLOUDWORKS — San Francisco, CA
+Senior Software Engineer                                July 2018 – January 2020
+• Led backend engineering for SaaS platform serving 5M+ users across
+  100+ enterprise customers
+• Reduced mean time to detection (MTTD) for production incidents by 70%
+  by building Datadog dashboards, custom SLO alerts, and runbook automation
+• Designed multi-region active-active architecture on AWS using Route53 latency
+  routing and DynamoDB Global Tables
+
+FINTECH STARTUP — San Francisco, CA
+Software Engineer                                          June 2016 – July 2018
+• Built REST APIs and webhook delivery system processing 2M+ events/day
+  with guaranteed at-least-once delivery via Kafka and idempotency keys
+• Architected AWS-based infrastructure from scratch (ECS, RDS, ElastiCache,
+  CloudFormation), cutting cloud spend 35% versus comparable managed services
+• Collaborated with product and design teams to deliver 3 major feature releases
+  per quarter in a fast-moving startup environment
+
+STANFORD UNIVERSITY — Stanford, CA
+Research Assistant, Distributed Systems Lab             August 2014 – May 2016
+• Researched consensus algorithms and fault-tolerant replication protocols
+• Published 2 peer-reviewed papers on distributed transaction coordination
+• Teaching assistant for graduate-level Distributed Systems course
+
+─────────────────────────────────────────────────────────────────────────────
+EDUCATION
+─────────────────────────────────────────────────────────────────────────────
+
+Master of Science, Computer Science
+Stanford University — Stanford, CA                        August 2014 – May 2016
+
+Bachelor of Science, Computer Science
+MIT — Cambridge, MA                                    September 2010 – May 2014
+
+─────────────────────────────────────────────────────────────────────────────
+ACHIEVEMENTS & RECOGNITION
+─────────────────────────────────────────────────────────────────────────────
+• Patent holder — US Patent for distributed data management system
+  https://patents.google.com/patent/USXXXXXXXX
+• Engineering Excellence Award — recognized for designing and delivering
+  company-wide infrastructure platform adopted by 8 product teams
+• Led cloud migration of a $10M revenue product to AWS in 2016 when cloud
+  adoption in the industry was still in early stages

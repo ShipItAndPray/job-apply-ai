@@ -1,0 +1,110 @@
+{
+  "personal": {
+    "firstName": "Jane",
+    "preferredName": "Jane",
+    "lastName": "Developer",
+    "email": "jane.developer@example.com",
+    "phone": "555-123-4567",
+    "linkedIn": "https://www.linkedin.com/in/janedeveloper/",
+    "github": "https://github.com/janedeveloper",
+    "website": "",
+    "location": {
+      "addressLine1": "123 Main Street",
+      "city": "San Francisco",
+      "state": "California",
+      "zip": "94105",
+      "country": "United States",
+      "willingToRelocate": true
+    }
+  },
+  "authorization": {
+    "authorizedToWork": true,
+    "requiresSponsorship": false,
+    "visaStatus": "US Citizen"
+  },
+  "demographics": {
+    "veteranStatus": "I am not a protected veteran",
+    "disabilityStatus": "No, I do not have a disability",
+    "gender": "Female",
+    "race": "White (Not Hispanic or Latino)",
+    "hispanicLatino": "No"
+  },
+  "experience": {
+    "totalYears": 8,
+    "currentTitle": "Senior Software Engineer",
+    "currentCompany": "TechCorp",
+    "desiredTitles": [
+      "Senior Staff Software Engineer",
+      "Staff Software Engineer",
+      "Principal Software Engineer",
+      "Senior Software Engineer"
+    ],
+    "desiredSalary": { "min": 150000, "max": 150000, "currency": "USD" },
+    "noticePeriod": "2 weeks",
+    "primarySkills": ["Java", "Spring Boot", "Kafka", "AWS", "Microservices", "Python", "TypeScript"],
+    "secondarySkills": ["MongoDB", "PostgreSQL", "DynamoDB", "Redis", "Docker", "Kubernetes", "Terraform"],
+    "livingInCity": "5+ years"
+  },
+  "education": [
+    {
+      "degree": "Master's",
+      "field": "Computer Science",
+      "school": "Stanford University",
+      "location": "Stanford, CA",
+      "startMonth": "August", "startYear": 2014,
+      "endMonth": "May", "endYear": 2016
+    },
+    {
+      "degree": "Bachelor's",
+      "field": "Computer Science",
+      "school": "MIT",
+      "location": "Cambridge, MA",
+      "startMonth": "September", "startYear": 2010,
+      "endMonth": "May", "endYear": 2014
+    }
+  ],
+  "workHistory": [
+    { "company": "TechCorp", "title": "Senior Software Engineer", "startMonth": "March", "startYear": 2022, "endMonth": "Present", "endYear": null, "location": "Remote", "description": "Java/Spring Boot microservices for payments platform, event-driven architecture with Kafka, AI-augmented development workflows" },
+    { "company": "DataSystems Inc", "title": "Software Engineer", "startMonth": "January", "startYear": 2020, "endMonth": "March", "endYear": 2022, "location": "Remote", "description": "High-throughput data pipeline processing 50M+ daily records, Spring Batch workflows, SOC 2 compliance" },
+    { "company": "CloudWorks", "title": "Senior Engineer", "startMonth": "July", "startYear": 2018, "endMonth": "January", "endYear": 2020, "location": "San Francisco, CA", "description": "Led backend for SaaS platform serving 5M+ users, reduced P1 incidents by 60%" },
+    { "company": "FinTech Startup", "title": "Software Engineer", "startMonth": "June", "startYear": 2016, "endMonth": "July", "endYear": 2018, "location": "San Francisco, CA", "description": "REST API design, microservices architecture, AWS cloud infrastructure, PostgreSQL performance tuning" },
+    { "company": "Stanford University", "title": "Research Assistant", "startMonth": "August", "startYear": 2014, "endMonth": "May", "endYear": 2016, "location": "Stanford, CA", "description": "Distributed systems research, published 2 papers on consensus algorithms" }
+  ],
+  "achievements": {
+    "patent": {
+      "url": "https://patents.google.com/patent/USXXXXXXXX",
+      "description": "Patent holder for work in distributed data management systems"
+    },
+    "award": {
+      "url": "https://www.linkedin.com/in/janedeveloper/",
+      "description": "Engineering excellence award for delivering company-wide infrastructure platform"
+    },
+    "earlyCloudAdopter": "Led migration of a critical product to AWS in 2016, reducing infrastructure costs by 40%",
+    "crossTechnology": "Confident working across a broad range of technologies — Java/AWS foundation with transferable architectural and engineering principles"
+  },
+  "links": {
+    "linkedIn": "https://www.linkedin.com/in/janedeveloper/",
+    "github": "https://github.com/janedeveloper"
+  },
+  "socialMediaUrls": {
+    "_description": "Use these when ATS asks for social media / social network URLs",
+    "linkedIn": "https://www.linkedin.com/in/janedeveloper/"
+  },
+  "outreachTemplates": {
+    "shortIntro": "Hi, I'm a senior software engineer based in San Francisco. My LinkedIn: https://www.linkedin.com/in/janedeveloper/",
+    "interestInRole": "Thanks for reaching out; I'm interested in full-time remote roles and happy to chat and learn more about the opportunity.",
+    "detailedPitch": "I have 8+ years of experience building high-scale distributed systems, primarily in Java and Python on AWS. I've led backend platforms serving millions of users, hold a patent for work in data management, and have been formally recognized for delivering company-wide engineering infrastructure.\n\nAt this stage in my career, especially with the rise of AI reducing technological barriers, I'm confident in my ability to work across a broad range of technologies. While my foundation is in Java and AWS, the core architectural and engineering principles I rely on translate effectively across languages and platforms.\n\nI look forward to the opportunity to connect and discuss how I can contribute to your team."
+  },
+  "documents": {
+    "resumeBasePath": "./templates/resume-base",
+    "resumeFormats": ["pdf", "docx", "txt"],
+    "coverLetterBase": "./templates/cover-letter-base.txt"
+  },
+  "preferences": {
+    "jobTypes": ["full time"],
+    "workModes": ["remote", "hybrid"],
+    "industries": ["fintech", "payments", "enterprise software", "cloud", "developer tools"],
+    "excludeCompanies": [],
+    "locations": ["Remote", "United States"]
+  }
+}

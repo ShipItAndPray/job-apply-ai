@@ -1,0 +1,56 @@
+Jane Developer
+San Francisco, CA 94105
+jane.developer@example.com | 555-123-4567
+https://www.linkedin.com/in/janedeveloper/
+
+{DATE}
+
+Hiring Manager
+{COMPANY_NAME}
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the {ROLE_TITLE} position at
+{COMPANY_NAME}. With 8+ years of experience building high-scale distributed
+systems and cloud-native backend platforms, I am confident that my technical
+depth and track record of delivery align well with what your team is looking for.
+
+{COMPANY_SPECIFIC_PARAGRAPH}
+[Replace this paragraph with 2-3 sentences specific to the company and role.
+Research: what does the company do, what problem does this role solve, why are
+you excited about this specific opportunity? Reference their tech stack, scale,
+or mission if relevant. Keep it genuine and specific — avoid generic filler.]
+
+Throughout my career at TechCorp, DataSystems Inc, and CloudWorks, I have
+delivered systems processing millions of daily transactions, led cross-team
+engineering initiatives, and consistently reduced production incidents through
+improved observability and resilience patterns. I hold a patent for work in
+distributed data management and have been formally recognized for delivering
+infrastructure platforms adopted across entire engineering organizations.
+
+{ROLE_SPECIFIC_PARAGRAPH}
+[Replace this paragraph with 2-3 sentences connecting your specific experience
+to the job requirements listed in the JD. Pull keywords and requirements
+directly from the posting. Be concrete: mention specific technologies, scale,
+or outcomes that map to what they need.]
+
+I am excited by the opportunity to bring this experience to {COMPANY_NAME} and
+contribute to {TEAM_OR_PRODUCT_AREA}. I would welcome the opportunity to discuss
+how my background aligns with your team's goals.
+
+Thank you for your time and consideration.
+
+Sincerely,
+
+Jane Developer
+
+─────────────────────────────────────────────────────────────────────────────
+TEMPLATE PLACEHOLDERS — replace all before sending:
+
+{DATE}                    → e.g., "March 21, 2026"
+{COMPANY_NAME}            → exact company name
+{ROLE_TITLE}              → exact job title from posting
+{COMPANY_SPECIFIC_PARAGRAPH} → 2-3 sentences about why THIS company
+{ROLE_SPECIFIC_PARAGRAPH}    → 2-3 sentences mapping your exp to THIS JD
+{TEAM_OR_PRODUCT_AREA}    → specific team, product, or mission area
+─────────────────────────────────────────────────────────────────────────────

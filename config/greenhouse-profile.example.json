@@ -1,0 +1,148 @@
+{
+  "_description": "Greenhouse ATS — field mappings, selectors, and application learnings. Read docs/greenhouse-ats-guide.md for full details.",
+
+  "urlPatterns": [
+    "job-boards.greenhouse.io",
+    "boards.greenhouse.io"
+  ],
+
+  "selectors": {
+    "form": {
+      "firstNameField": "#first_name",
+      "lastNameField": "#last_name",
+      "emailField": "#email",
+      "phoneField": "#phone",
+      "linkedInField": "input[name*='linkedin' i], input[id*='linkedin' i]",
+      "preferredNameField": "input[name*='preferred' i], input[id*='preferred' i]",
+      "githubField": "input[name*='github' i], input[id*='github' i]",
+      "locationField": "input[name*='location' i], input[name*='city' i]",
+      "websiteField": "input[name*='website' i], input[id*='website' i]",
+      "resumeUpload": "input[type='file']#resume",
+      "resumeUploadFallback": "input[type='file'][name*='resume' i]",
+      "resumeUploadAny": "input[type='file']",
+      "coverLetterUpload": "input[type='file']#cover_letter",
+      "coverLetterUploadAlt": "input[type='file'][name*='cover' i]",
+      "submitButton": "#submit_app",
+      "submitButtonFallback": "button[type='submit'], input[type='submit']"
+    },
+    "autofill": {
+      "linkedInAutofillButton": "a[data-source='linkedin'], .autofill-linkedin, a:has-text('AutoFill with LinkedIn')",
+      "resumeAutofillNote": "Upload resume FIRST — Greenhouse parses and autofills fields automatically"
+    },
+    "iframe": {
+      "detection": "frame[src*='greenhouse.io'], iframe[src*='greenhouse.io']",
+      "urlPattern": "greenhouse.io"
+    },
+    "applyButton": "button.apply-btn, a.apply-btn, a:has-text('Apply Now'), button:has-text('Apply Now'), a:has-text('Apply'), button:has-text('Apply')",
+    "confirmationText": ["Thank you for your application", "Application submitted", "Your application has been received", "Thank you for applying"]
+  },
+
+  "fieldValues": {
+    "firstName": "Jane",
+    "preferredName": "Jane",
+    "lastName": "Developer",
+    "email": "jane.developer@example.com",
+    "phone": "555-123-4567",
+    "linkedIn": "https://www.linkedin.com/in/janedeveloper/",
+    "github": "https://github.com/janedeveloper",
+    "location": "San Francisco, California",
+    "city": "San Francisco",
+    "state": "California",
+    "zip": "94105",
+    "country": "United States"
+  },
+
+  "customQuestionAnswers": {
+    "_description": "Patterns matched against select ID/name/label (case-insensitive). Radio buttons handled separately.",
+
+    "selectDropdowns": {
+      "veteran": "I am not a protected veteran",
+      "disability": "No, I Don't Have a Disability",
+      "gender": "Decline to Self-Identify",
+      "race|ethnicity|racial|background": "Decline to Self-Identify",
+      "hispanic|latino": "No",
+      "hear|source|referral|how did you find": "LinkedIn",
+      "years.*experience|experience.*years": "10+",
+      "relocation|relocate": "Yes",
+      "clearance|security clearance": "None",
+      "authorised.*work|authorized.*work": "Yes"
+    },
+
+    "textInputs": {
+      "_note": "Patterns matched against label text + input name + input id. Order matters: more specific patterns first.",
+      "salary|compensation|expected salary|desired salary": "YOUR_SALARY",
+      "^linkedin|linkedin profile|linkedin url": "https://www.linkedin.com/in/janedeveloper/",
+      "github|gitlab": "https://github.com/janedeveloper",
+      "website|portfolio": "https://www.linkedin.com/in/janedeveloper/",
+      "what state|state.*reside|currently reside": "California",
+      "why.*join|want to join|why.*interested": "I am excited about this opportunity to bring my 8+ years of backend engineering experience to your team. My expertise in distributed systems, cloud infrastructure, and high-throughput data platforms directly aligns with this role's core requirements.",
+      "what city|city.*state|city.*work|work.*city|plan to work from": "San Francisco, California",
+      "start date|available to start|notice period": "2 weeks",
+      "years.*experience|experience.*years": "8",
+      "preferred name|nickname": "Jane",
+      "venture capital|vc.*backed|pe.*backed|private equity|startup.*list": "N/A",
+      "authorized.*without restriction|without restriction|legally authorized.*us|authorized.*work.*us": "Yes",
+      "require.*sponsor|sponsorship.*required|need.*visa|visa.*sponsor|future require sponsor": "No",
+      "in.person event|comfortable.*event|event.*comfortable|interact.*screen|outside.*laptop": "Yes",
+      "^gender$|gender \\*|your gender": "Decline to Self-Identify",
+      "veteran status|protected veteran": "I am not a protected veteran",
+      "disability status|have a disability": "No, I do not have a disability",
+      "hispanic|latino": "No",
+      "race|ethnicity": "Decline to Self-Identify",
+      "sexual orientation": "Decline to answer",
+      "transgender": "Decline to answer",
+      "background check|consent.*background": "Yes",
+      "willing to relocate|open to relocation": "Yes"
+    },
+
+    "radioButtons": {
+      "_note": "Pattern matched against question label. Value is the label text of the radio option to select.",
+      "authorized.*without restriction|authorized to work.*us|legally authorized|authorised.*work": "Yes",
+      "require.*sponsor|sponsorship.*required|need.*visa|visa.*sponsor": "No",
+      "in.person|in person event|comfortable.*event|event.*comfortable": "Yes",
+      "willing to relocate|open to relocat": "Yes",
+      "remote.*work|work.*remote": "Yes",
+      "background check|consent.*background": "Yes",
+      "non.compete|bound by|restrictive covenant": "No",
+      "18 or older|over 18|age verification": "Yes"
+    },
+
+    "checkboxes": {
+      "agree|consent|acknowledge|terms|authorization|background|certify": true
+    }
+  },
+
+  "autofillStrategy": {
+    "order": [
+      "1_try_linkedin_autofill_button",
+      "2_upload_resume_for_parse_autofill",
+      "3_wait_3_to_5_seconds_for_parse",
+      "4_verify_and_correct_autofilled_fields",
+      "5_fill_remaining_empty_fields",
+      "6_answer_custom_questions",
+      "7_screenshot_review",
+      "8_submit"
+    ],
+    "resumeUploadFirst": true,
+    "waitAfterResumeUploadMs": 4000,
+    "skipLinkedInOAuthPopup": true
+  },
+
+  "waitTimes": {
+    "pageLoadMs": 3000,
+    "afterResumeUploadMs": 4000,
+    "afterSubmitMs": 5000,
+    "betweenFieldsMs": 100
+  },
+
+  "companyLearnings": {
+    "_note": "Add per-company notes here as you discover quirks. Key: Greenhouse tenant slug.",
+    "example-company": {
+      "tenant": "example-company",
+      "hasPreferredNameField": true,
+      "hasGithubField": true,
+      "eeoSectionPresent": true,
+      "notes": "Standard single-page Greenhouse form."
+    }
+  }
+}
