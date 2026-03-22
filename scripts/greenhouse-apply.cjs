@@ -89,6 +89,11 @@ async function safeUpload(page, selector, filePath) {
   } catch { return false; }
 }
 
+// Sleep helper that works with both Page and FrameLocator
+async function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Greenhouse form filler
 async function fillGreenhouseForm(page, profile) {
   const p = profile.personal;
@@ -114,7 +119,7 @@ async function fillGreenhouseForm(page, profile) {
       || await safeUpload(page, "input[type='file']", resumePath);
     if (uploaded) {
       console.log(`  ✅ Resume uploaded: ${path.basename(resumePath)}`);
-      await page.waitForTimeout(3000); // wait for Greenhouse to parse
+      await sleep(3000); // wait for Greenhouse to parse
     } else {
       console.log('  ⚠️  Could not find resume upload field');
     }
