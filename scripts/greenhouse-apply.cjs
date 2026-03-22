@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * Apply to Greenhouse jobs using Playwright browser automation.
+ * FALLBACK: Apply to Greenhouse jobs using script-based automation.
+ *
+ * WARNING: This script uses hardcoded CSS selectors and cannot handle
+ * custom dropdowns, radio buttons, or complex multi-step forms.
+ * It WILL miss fields. Use Claude Code + Playwright MCP instead.
  *
  * Usage:
  *   node scripts/greenhouse-apply.cjs                           # Apply to first job in filtered list
@@ -16,12 +20,74 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
+const { execSync } = require('child_process');
 
 const BASE = path.resolve(__dirname, '..');
 const PROFILE_PATH = path.join(BASE, 'config', 'profile.json');
 const FILTERED_PATH = path.join(BASE, 'data', 'jobs', 'greenhouse-filtered.json');
 const LOG_PATH = path.join(BASE, 'data', 'applications-log.json');
 const SCREENSHOTS_DIR = path.join(BASE, 'data', 'screenshots');
+
+// ============================================================================
+// CHECK FOR PLAYWRIGHT MCP — the recommended way to apply
+// ============================================================================
+function checkPlaywrightMCP() {
+  const settingsPaths = [
+    path.join(os.homedir(), '.claude', 'settings.json'),
+    path.join(BASE, '.claude', 'settings.json'),
+    path.join(BASE, '.mcp.json'),
+  ];
+
+  for (const p of settingsPaths) {
+    try {
+      if (fs.existsSync(p)) {
+        const content = fs.readFileSync(p, 'utf8');
+        if (content.includes('playwright')) return true;
+      }
+    } catch {}
+  }
+  return false;
+}
+
+if (!checkPlaywrightMCP()) {
+  console.log('\n' + '='.repeat(74));
+  console.log('  ⚠️  WARNING: PLAYWRIGHT MCP NOT DETECTED');
+  console.log('='.repeat(74));
+  console.log('');
+  console.log('  You are using the FALLBACK script-based form filler.');
+  console.log('  This is NOT efficient or effective. It uses hardcoded CSS');
+  console.log('  selectors and WILL miss fields like:');
+  console.log('    - Custom dropdowns (country, work authorization)');
+  console.log('    - Radio button groups');
+  console.log('    - Multi-step forms');
+  console.log('    - Dynamic/conditional questions');
+  console.log('');
+  console.log('  The recommended approach is Claude Code + Playwright MCP.');
+  console.log('  Claude sees the form visually and fills ALL fields correctly.');
+  console.log('');
+  console.log('  To set up Playwright MCP, add this to ~/.claude/settings.json:');
+  console.log('');
+  console.log('    {');
+  console.log('      "mcpServers": {');
+  console.log('        "playwright": {');
+  console.log('          "command": "npx",');
+  console.log('          "args": ["-y", "@playwright/mcp@latest"]');
+  console.log('        }');
+  console.log('      }');
+  console.log('    }');
+  console.log('');
+  console.log('  Then use: claude "apply to this job at <url>"');
+  console.log('='.repeat(74));
+  console.log('');
+
+  // Auto-install Playwright MCP if user wants
+  if (!process.argv.includes('--force')) {
+    console.log('  Continuing with fallback script in 5 seconds...');
+    console.log('  (Use --force to skip this warning)\n');
+    execSync('sleep 5');
+  }
+}
 
 // Parse args
 const args = process.argv.slice(2);
