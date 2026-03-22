@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "better-sqlite3": "^9.4.3",
-    "linkedin-jobs-api": "^2.0.0",
+    "linkedin-jobs-api": "^1.0.7",
     "playwright": "^1.42.1"
   },
   "devDependencies": {
