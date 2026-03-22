@@ -84,8 +84,8 @@ Claude Code + Playwright MCP works on **any** ATS because it reads the form visu
 
 ### Prerequisites
 - Node.js 20+
-- [Claude Code CLI](https://claude.ai/claude-code) (for AI-powered features)
-- Playwright MCP configured in Claude Code
+- [Claude Code CLI](https://claude.ai/claude-code) **(required)**
+- Playwright MCP **(required)** — Claude Code uses this to open and fill job application forms in a real browser
 
 ### Install
 
